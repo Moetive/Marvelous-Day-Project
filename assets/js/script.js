@@ -21,7 +21,7 @@ console.log(PrKey);
 console.log(cTime);
 console.log(hash);
 
-  var QueryUrl = "https://gateway.marvel.com:443/v1/public/comics?&format=comic&formatType=comic&dateDescriptor=thisMonth&ts=" + cTime + "&apikey=" + PoKEY + "&hash=" + hash;
+  var QueryUrl = "https://gateway.marvel.com:443/v1/public/comics?dateRange=1990-01-31%2C%201990-01-01&format=comic&formatType=comic&dateDescriptor=thisMonth&ts=" + cTime + "&apikey=" + PoKEY + "&hash=" + hash;
   
 
   console.log(QueryUrl);
@@ -29,13 +29,10 @@ console.log(hash);
 
   fetch(QueryUrl)
     .then(function (response) {
-      if (!response.ok) {
-        throw response.json();
-      }
-      return response.json();
+      return response;
     })
-    .then(function () {
-      console.log(response);
+    .then(function (response) {
+      console.log(response.json());
       })
     .catch(function (error) {
       console.error(error);
