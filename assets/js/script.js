@@ -40,3 +40,5 @@ var QueryUrl = "https://gateway.marvel.com:443/v1/public/comics?" + dateRange + 
       console.error(error);
     });
 }
+
+searchComic();
