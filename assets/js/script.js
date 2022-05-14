@@ -7,16 +7,6 @@ function searchComic() {
 var pvtkey = "0b0978c066ab6b1971c35e90aa799998";
 var pubkey = '3d6bd3acb1691f2b4475823f3933cb22f190092f';
 
-// var ts = new Date();
-// ts = ts.getUTCMilliseconds(); 
-// console.log(ts);
-
-
-//----------------------
-//var str_1 = ts + environment.pvtkey + environment.pubkey;  
-//var str_2 = request.data["timeStamp"] + request.data["apiKey"];
-//var hash = CryptoJS.MD5(str_1).toString(); 
-
 var ts = Number(new Date());
 
 var message = ts+pubkey+pvtkey;  
@@ -32,7 +22,6 @@ console.log(dateRange);
 
 QueryUrl = 'https://gateway.marvel.com/v1/public/characters?ts='+ts+'&orderBy=name&apikey='+ pvtkey +'&hash='+ hash;
 QueryUrl = "https://gateway.marvel.com:443/v1/public/comics?" + dateRange + "&format=comic&formatType=comic&dateDescriptor=thisMonth&ts=" + ts + "&apikey=" + pvtkey + "&hash=" + hash;
-
 
 console.log(hash);
 console.log(QueryUrl);
@@ -67,8 +56,6 @@ function printout(items){
     searchHistory(items[i]['name']);
   }
 }
-
-
 //------------------------------search history-------------------------------------------
 function searchHistory(resultObj) {
   console.log(resultObj);
