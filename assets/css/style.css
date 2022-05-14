@@ -1,0 +1,49 @@
+:root {
+  --bg-color: rgb(2, 45, 110);
+  --text-color: rgb(238, 238, 238);
+  --accent-text-color: rgb(218, 190, 32);
+  --accent-color: rgb(122, 7, 7);
+}
+
+* {
+  box-sizing: border-box;
+}
+      
+body {
+  font-family: Arial;
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+}
+
+.nav-bar, footer, li {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+.card-text, .card-title {
+  color: black;
+}
+
+.btn-primary {
+  background-color: var(--accent-text-color);
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: rgb(187, 169, 7);
+}
+
+.footer {
+  position: sticky;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 5px;
+}
+
+
+
+      
