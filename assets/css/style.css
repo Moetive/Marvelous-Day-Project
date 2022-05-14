@@ -1,0 +1,88 @@
+body {
+  font-family: 'Fira Sans', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Merriweather', serif;
+  font-weight: 700;
+}
+header {
+  padding: 3%;
+  background-color: #010101;
+  color: white;
+  text-shadow: 5px 2px black;
+
+}
+img{
+  vertical-align:middle;
+}
+.daycard {
+  border-width: 1px;
+  border-color: #fff;
+  padding: 2%;
+  flex: 0 0 5%;
+  box-shadow: 0 -10 5px #ffffffee;
+  border-radius: 10px;
+  border-style: solid;
+  margin-bottom: 50px;
+}
+.fDaycard {
+  border-width: 1px;
+  border-color: #fff;
+  padding: 2%;
+  flex: 0 0 5%;
+  box-shadow: 0 -10 5px #ffffffee;
+  border-radius: 10px;
+  border-style: solid;
+  margin-bottom: 50px;
+
+}
+.ux {
+  margin-top: 1%;
+  display: inline;
+  border-width: 1px;
+  width: 2%;
+  padding: 0.5%;
+  border-color: #fff;
+  box-shadow: 0 -10 5px #ffffffee;
+  border-radius: 10px;
+  border-style: none;
+  background-color: blue;
+  color: white;
+}
+
+.products {
+  display:flex;
+  flex-flow: wrap; 
+  flex: 3;
+  padding: 0 5% ;
+  margin-bottom: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-evenly;
+  align-items: flex-start;
+  text-shadow: 0 0 3px #010101;
+}
+.margin{
+  margin-bottom: 1%;
+}
+.row{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.column{
+display: flex;
+flex-direction: column;
+}
+.grid
+{
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(12, 1fr);
+}
