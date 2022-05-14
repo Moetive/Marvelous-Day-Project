@@ -2,20 +2,28 @@
 //---------------------------searchLatLon--------------------------------------------
 function searchComic() {
   //my key
-var PoKEY = "0b0978c066ab6b1971c35e90aa799998";
-var PrKey = '3d6bd3acb1691f2b4475823f3933cb22f190092f';
+var PoKEY = "4ad6d5dfbe0363fc5df19946c9351c2a";
+// var PoKEY = "justesting"
+var PrKey = 'f820964efbbd5f5c999a0e07acf2d1121d12729d';
+// var PrKey = "awdpawdpakwd"
 // 
-var cTime = 1;
+var cTime = "1234"
 //console.log(cTime);
 
 
 //----------------------
 
-var hash = CryptoJS.MD5(cTime+PoKEY+PrKey).toString();
+var hashTest = CryptoJS.MD5(cTime+PrKey+PoKEY);
+var hash = hashTest.toString(CryptoJS.enc.Hex);
+
+console.log(PoKEY);
+console.log(PrKey);
+console.log(cTime);
 console.log(hash);
 
-  var QueryUrl = "https://gateway.marvel.com:443/v1/public/comics?ts=1&format=comic&formatType=comic&dateDescriptor=thisMonth&apikey="+PoKEY+'&hash='+hash;
+  var QueryUrl = "https://gateway.marvel.com:443/v1/public/comics?&format=comic&formatType=comic&dateDescriptor=thisMonth&ts=" + cTime + "&apikey=" + PoKEY + "&hash=" + hash;
   
+
   console.log(QueryUrl);
 
 
@@ -26,26 +34,9 @@ console.log(hash);
       }
       return response.json();
     })
-    .then(function (locRes) {
-      // write query to page so user knows what they are viewing
-      // resultTextEl.textContent = locRes.search.query;
-      // console.log(locRes);
-      //console.log(locRes.length);
-      if (!locRes.length) {
-        console.log('No results found!');
-        resultContentEl.innerHTML = '<h3>No results found, search again!</h3>';
-      } else {
-        resultContentEl.textContent = '';
-        for (var i = 0; i < locRes.length; i++) {
-          
-          lat = locRes[i].lat;
-          lon = locRes[i].lon;
-          console.log('Lat = ',lat,'lon = ' , lon);
-
-          searchWeather(lat,lon);
-        }
-      }
-    })
+    .then(function () {
+      console.log(response);
+      })
     .catch(function (error) {
       console.error(error);
     });
