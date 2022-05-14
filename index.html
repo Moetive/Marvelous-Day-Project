@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Results | Library of Congress Search</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap"
+    rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+    <!-- crypto-js JavaScript library of crypto standards -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+
+    <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
+  ></script>
+  
+</head>
+
+<body onload="searchComic()">
+
+  <header style="text-align: center;">
+    <h1>List</h1>
+    <p style="color: aliceblue;">
+    </p>
+  </header> 
+
+  <div class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary">
+    <div class="col-12 col-md-3 bg-light p-3">
+      <form id="search-form" class="mb-2">
+        <div class="ui-widget">
+          <h1 class="text-primary"><label for="search-input">Search for city: </label></h1>
+          <input id="search-input" class="form-input w-100" type="text" placeholder="Search!">
+        </div>
+        <button class="btn btn-info btn-block">Search</button>
+      </form>
+      <div id="search-body">
+        
+      </div>
+    </div>
+
+
+    <div class="col-12 col-md-9 p-3 text-light">
+      <div id="result-day">
+      </div>
+      <div id="result-5day" class="row justify-center">
+
+      </div>
+
+
+
+  </div>
+
+  <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
