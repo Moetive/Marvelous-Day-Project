@@ -19,6 +19,7 @@ APIs:
 </br>----------------------
 </br>
 Libraries:
+</br>Crypto.js
 </br>jQuery
 </br>Bootstrap
 </br>Momentjs
