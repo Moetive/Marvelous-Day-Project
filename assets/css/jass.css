@@ -979,7 +979,7 @@ a:hover {
   padding: 0.5rem 1.2rem;
   margin: 0;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 2rem;
   border-radius: 0.3rem;
   border: 1px solid transparent;
   outline: none;
@@ -990,6 +990,8 @@ a:hover {
 
 .btn:hover {
   background-color: #cecece;
+  transform: scale(1.2);
+  opacity: 100%;
 }
 
 .btn.btn-squared {

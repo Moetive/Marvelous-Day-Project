@@ -1,5 +1,30 @@
+
+canvas {
+  position:fixed;
+  z-index:-1;
+}
+
+a {
+  color:#222a;
+  text-decoration:#2224 wavy underline;
+  transition:all 0.3s;
+
+}
+a:hover {
+  color:#2223;
+  text-shadow:0 0 100px #333;
+}
 body {
   font-family: 'Fira Sans', sans-serif;
+  background-image:url('../img/Marvel.jpg');
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-size: 100% 100%;
+  display:grid;
+  justify-content:center;
+  align-content:center;
+  height:100vh;
+  font:5vh Lora;
 }
 
 h1,
@@ -86,3 +111,9 @@ flex-direction: column;
   width: 100%;
   grid-template-columns: repeat(12, 1fr);
 }
+
+
+
+
+
+

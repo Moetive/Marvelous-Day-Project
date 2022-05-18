@@ -1,0 +1,154 @@
+/* color scheme sourced from http://khroma.co/generator/ */
+canvas {
+  position:fixed;
+  z-index:-1;
+}
+
+:root {
+  --outer-space: #33393f;
+  --bright-turquoise: #2aefcb;
+  --gin: #e0eae4;
+  --heliotrope: #ff0404;
+}
+
+/* set content highlight color and background */
+::selection {
+  background-color: var(--bright-turquoise);
+  color: var(--outer-space);
+}
+
+html {
+  /* set 1rem to 10px instead of native 16px to make it easier to calculate font-size values for the rest of the page (e.g. 1.6rem is 16px, 2.0rem is 20px, etc.) */
+  font-size: 62.5%;
+}
+.bg{
+  width:100%;
+  height:100%;
+  position:fixed;
+  z-index: -1;
+}
+body {
+  font-family: 'Fira Sans', sans-serif;
+  background-image:url('../img/Marvel.jpg');
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-size: 100% 100%;
+  display:grid;
+  justify-content:center;
+  align-content:center;
+  height:95vh;
+  font:5vh Lora;
+}
+.back{
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-size: 100% 100%;
+}
+.box {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px 2em;
+}
+.box:first-child{
+  align-self: auto;
+}
+
+main {
+  width: 96%;
+  margin: 2rem auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+
+/* make each code card a flexbox column to align and justify content within it */
+.code-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 80%;
+  padding: 5%;
+  color: var(--heliotrope);
+  outline: 2px solid var(--heliotrope);
+  outline-color: #33393f;
+  outline-offset: -2px;
+  transition: all 0.5s ease-in-out;
+  border-radius: 8px;
+}
+.solid {border-style: solid;}
+.code-card-result{
+  display:flexbox;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 80%;
+  padding: 5%;
+  color: var(--heliotrope);
+  outline: 2px solid var(--heliotrope);
+  outline-color: #33393f;
+  outline-offset: -2px;
+  transition: all 0.5s ease-in-out;
+  border-radius: 8px;
+}
+
+.card-text {
+  /* use position and negative margins to move title of card over the card's outline and create an overlap effect */
+  font-family: 'Fira Sans', sans-serif;
+  position:relative ;
+  top: -500%;
+  font-size: 50%;
+  color: #ffffff;
+  margin: -4rem 0 1.5rem 0;
+  padding: 0.5rem 1rem;
+  background-color: var(--outer-space);
+  color: var(--gin);
+  border: 2px solid #33393f;
+  border-radius: 8px;
+  transition: all 0.5s ease-in-out;
+}
+
+
+/* set an outer and inner drop shadow on the card to create a glowing effect on hover */
+.code-card:hover,
+.code-card:hover .card-text{
+  box-shadow: inset 0px 0px 8px var(--heliotrope), 0 0 15px var(--heliotrope);
+  outline-color: red;
+  transform: scale(1.2);
+  border: #f70303;
+
+}
+.input{
+  position:fixed;
+  bottom: 80%;
+  -webkit-transform: rotate(-90deg); 
+  -moz-transform: rotate(-90deg); 
+  font-size:100%;
+}
+
+
+
+
+.container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Then style the iframe to fit in the container div with full height and width */
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  background-color: #e0eae4;
+  opacity: 90%;
+}
