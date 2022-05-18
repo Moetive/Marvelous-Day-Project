@@ -1,10 +1,14 @@
 var searchBody = document.querySelector('#search-body');
 var year;
 var munth;
+//document.getElementById("myDIV").style.opacity = "0.5";
+
 //---------------------------searchLatLon--------------------------------------------
 function searchComic() {
   //my key
 getParams();
+document.body.style.background.opacity = '0.1';
+
 
 var pvtkey = "0b0978c066ab6b1971c35e90aa799998";
 var pubkey = '3d6bd3acb1691f2b4475823f3933cb22f190092f';
@@ -43,7 +47,8 @@ console.log(QueryUrl);
         var newObj = locRes['data']['results'];
         console.log(newObj);
         for (var i = 0; i < newObj.length; i++) {
-          printout(newObj[i]['characters']['items']);
+          // printout(newObj[i]['characters']['items']);
+          searchHistory(newObj[i]['title'],newObj[i]['thumbnail']['path']);
         }
       }
     })
@@ -51,23 +56,27 @@ console.log(QueryUrl);
       console.error(error);
     });
 }
-
-function printout(items){
-  for (var i = 0; i < items.length; i++) {
-    searchHistory(items[i]['name']);
-  }
-}
 //------------------------------search history-------------------------------------------
-function searchHistory(resultObj) {
+function searchHistory(resultObj,path) {
   console.log(resultObj);
       var linkButtonEl = document.createElement('a');
       //https://www.google.com/search?q=fantastic+four
       var url = 'https://www.google.com/search?q=' + resultObj+ ' comic book marvel';
       linkButtonEl.textContent = resultObj;
       linkButtonEl.setAttribute('id',resultObj);
-      linkButtonEl.setAttribute('href', url);
+      linkButtonEl.setAttribute('href', path+'.jpg', target = "_self");
       linkButtonEl.classList.add('btn', 'btn-dark','column','margin','btn-info', 'btn-block');
       searchBody.prepend(linkButtonEl);
+
+      // b.getAttribute("href") && b.hostname !== location.hostname && (b.target = "_blank") } } ; externalLinks();
+
+}
+//------------------------------function printout-------------------------------------------
+
+function printout(items){
+  for (var i = 0; i < items.length; i++) {
+    searchHistory(items[i]['name']);
+  }
 }
 //------------------------------click event-------------------------------------------
 var munthText = document.getElementById("munthText");

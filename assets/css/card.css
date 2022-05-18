@@ -39,6 +39,11 @@ body {
   height:95vh;
   font:5vh Lora;
 }
+
+/* #containerBody{
+  background-image:url('../img/Marvel.jpg');
+  
+} */
 .back{
   background-repeat: no-repeat;
   background-size: auto;
