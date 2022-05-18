@@ -16,10 +16,25 @@ body {
   color: var(--text-color);
   min-height: 100vh;
 }
+.errorcode {
+  background-color: red;
+  color:red;
+}
 
+<<<<<<< Updated upstream
 .nav-bar, footer, li {
   background-color: var(--accent-color);
   color: var(--text-color);
+=======
+h1
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Merriweather', serif;
+  font-weight: 700;
+>>>>>>> Stashed changes
 }
 
 .card-text, .card-title {
