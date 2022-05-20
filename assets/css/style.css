@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 canvas {
   position:fixed;
@@ -29,37 +28,6 @@ body {
 }
 
 h1,
-=======
-:root {
-  --bg-color: rgb(2, 45, 110);
-  --text-color: rgb(238, 238, 238);
-  --accent-text-color: rgb(218, 190, 32);
-  --accent-color: rgb(122, 7, 7);
-}
-
-* {
-  box-sizing: border-box;
-}
-      
-body {
-  font-family: Arial;
-  margin: 0;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  min-height: 100vh;
-}
-.errorcode {
-  background-color: red;
-  color:red;
-}
-
-<<<<<<< Updated upstream
-.nav-bar, footer, li {
-  background-color: var(--accent-color);
-  color: var(--text-color);
-=======
-h1
->>>>>>> 430ffdef73aad31408cca1a0890b9d0c87814561
 h2,
 h3,
 h4,
@@ -67,7 +35,6 @@ h5,
 h6 {
   font-family: 'Merriweather', serif;
   font-weight: 700;
-<<<<<<< HEAD
 }
 header {
   padding: 3%;
@@ -143,39 +110,10 @@ flex-direction: column;
   display: grid;
   width: 100%;
   grid-template-columns: repeat(12, 1fr);
-=======
->>>>>>> Stashed changes
-}
-
-.card-text, .card-title {
-  color: black;
-}
-
-.btn-primary {
-  background-color: var(--accent-text-color);
-  border: none;
-}
-
-.btn-primary:hover {
-  background-color: rgb(187, 169, 7);
-}
-
-.footer {
-  position: sticky;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  padding: 5px;
->>>>>>> 430ffdef73aad31408cca1a0890b9d0c87814561
 }
 
 
 
-<<<<<<< HEAD
 
 
 
-=======
-      
->>>>>>> 430ffdef73aad31408cca1a0890b9d0c87814561
