@@ -1,9 +1,13 @@
 var searchBody = document.querySelector('#search-body');
+var colapsTag = document.querySelector('#accordion');
+var p1 = document.querySelector('#p1');
+
 var year;
 var munth;
+var wikiObj;
 //document.getElementById("myDIV").style.opacity = "0.5";
 
-//---------------------------searchLatLon--------------------------------------------
+//---------------------------search Comic--------------------------------------------
 function searchComic() {
   //my key
 getParams();
@@ -48,7 +52,7 @@ console.log(QueryUrl);
         console.log(newObj);
         for (var i = 0; i < newObj.length; i++) {
           // printout(newObj[i]['characters']['items']);
-          searchHistory(newObj[i]['title'],newObj[i]['thumbnail']['path']);
+          searchHistory(newObj[i]['title'],newObj[i]['thumbnail']['path'],newObj[i]['urls'][0]['url']);
         }
       }
     })
@@ -56,21 +60,66 @@ console.log(QueryUrl);
       console.error(error);
     });
 }
+
+//----------------------------------------------------------------------------------
+//https://en.wikipedia.org/w/rest.php/v1/search/page?q=Captain%20America&limit=100
+//https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=&srlimit=20&srsearch=SEARCH_QUERY_GOES_HERE
+//---------------------------search Wiki--------------------------------------------
+function searchWiki(resultObj) {
+  var wikiTitle;
+  var nameCleaned = resultObj.replace(/\s/g, '%20')
+  var value = "'"+nameCleaned+"'"
+  console.log(value);
+  var WikiQueryUrl = 'https://en.wikipedia.org/w/rest.php/v1/search/page?limit=1&q='+value;
+  //console.log(WikiQueryUrl);
+  
+    fetch(WikiQueryUrl)
+      .then(function (response) {
+        if (!response.ok) {
+          throw response.json();
+        }
+        return response.json();
+      })
+      .then(function (locRes) {
+        if (!locRes) {
+          console.log('No results found!');
+          resultContentEl.innerHTML = '<h3>No results found, search again!</h3>';
+        } else {
+          console.log(locRes);
+          wikiObj = locRes['pages'][0]['title'];
+          console.log(wikiObj);
+
+        }
+
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+      // wikiTitle = locRes['pages'][0]['description'];
+    console.log(wikiObj);
+    return wikiTitle;
+  }
+  
 //------------------------------search history-------------------------------------------
-function searchHistory(resultObj,path) {
-  console.log(resultObj);
+function searchHistory(resultObj,path,Marvelurl) {
+      var wikiTitle = searchWiki(resultObj);
+      console.log(wikiTitle);
+      var p1 = document.createElement('p');
       var linkButtonEl = document.createElement('a');
       //https://www.google.com/search?q=fantastic+four
       var url = 'https://www.google.com/search?q=' + resultObj+ ' comic book marvel';
       linkButtonEl.textContent = resultObj;
-      linkButtonEl.setAttribute('id',resultObj);
-      linkButtonEl.setAttribute('href', path+'.jpg', target = "_self");
+      p1.setAttribute('id','p1');
+  //  linkButtonEl.setAttribute('href', path+'.jpg', target = "_self");
+      linkButtonEl.setAttribute('href',Marvelurl, target = "_self");
+      linkButtonEl.setAttribute('title',wikiTitle);
       linkButtonEl.classList.add('btn', 'btn-dark','column','margin','btn-info', 'btn-block');
-      searchBody.prepend(linkButtonEl);
-
+      searchBody.append(p1);
+      p1.appendChild(linkButtonEl);
       // b.getAttribute("href") && b.hostname !== location.hostname && (b.target = "_blank") } } ; externalLinks();
 
 }
+
 //------------------------------function printout-------------------------------------------
 
 function printout(items){
@@ -106,6 +155,10 @@ function getParams() {
 
   //searchApi(query, format);
 }
+//---------------------------------------------------------------------------
+$(function() {
+  $('#p1 a').miniPreview({ prefetch: 'pageload' });
+});
 //---------------------------background effect------------------------------
 console.clear();
 const canvas = document.createElement('canvas');
