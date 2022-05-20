@@ -1,13 +1,10 @@
 
 //---------------------------searchLatLon--------------------------------------------
 function searchComic() {
-<<<<<<< Updated upstream
-=======
   //my key
 getParams();
 console.log(year)
 document.body.style.background.opacity = '0.1';
->>>>>>> Stashed changes
 
 // Create variables from pub and private keys
 var PoKEY = "4ad6d5dfbe0363fc5df19946c9351c2a";
@@ -33,14 +30,6 @@ var dateRange = "dateRange=" + date1 + "%2C%20" + date2;
 // The url, baby!
 var QueryUrl = "https://gateway.marvel.com:443/v1/public/comics?" + dateRange + "&format=comic&formatType=comic&dateDescriptor=thisMonth&ts=" + cTime + "&apikey=" + PoKEY + "&hash=" + hash;
 
-<<<<<<< Updated upstream
-  console.log(QueryUrl);
-
-// I don't actually know what any of this does..
-  fetch(QueryUrl)
-    .then(function (response) {
-      return response;
-=======
 console.log(hash);
 console.log(QueryUrl);
 Minimum = 1
@@ -72,7 +61,6 @@ Minimum = 1
         }
       }
       
->>>>>>> Stashed changes
     })
     .then(function (response) {
       console.log(response.json());
@@ -81,8 +69,6 @@ Minimum = 1
       console.error(error);
     });
 }
-<<<<<<< Updated upstream
-=======
 // // -------------------------------pop up script --------------------------------------
 // function myFunction() {
 //   var popup = document.getElementById("myPopup");
@@ -287,6 +273,5 @@ function f() {
     );
 }
 f();
->>>>>>> Stashed changes
 
 searchComic();
