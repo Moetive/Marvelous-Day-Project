@@ -275,3 +275,12 @@ function f() {
 f();
 
 searchComic();
+
+// wiki API additions
+
+
+
+
+
+
+
