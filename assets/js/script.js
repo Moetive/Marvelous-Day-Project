@@ -99,7 +99,7 @@ function searchWiki(resultObj) {
           console.log(locRes);
           wikiObj = locRes['pages'][0]['title'];
           console.log(wikiObj);
-
+          return wikiTitle;  
         }
 
       })
@@ -107,7 +107,6 @@ function searchWiki(resultObj) {
         console.error(error);
       });
       // wikiTitle = locRes['pages'][0]['description'];
-    console.log(wikiObj);
     return wikiTitle;
   }
   
@@ -159,9 +158,6 @@ function getParams() {
   var searchParamsArr = document.location.search.split('&');
   year = searchParamsArr[0].split('=').pop();
   munth = searchParamsArr[1].split('=').pop();
-  if (year===null || year===undefined || year ==='') {
-    document.location = './yearError.html';
-  }
   console.log(year,munth);
   return;
   // Get the query and format values
@@ -169,6 +165,10 @@ function getParams() {
 
   //searchApi(query, format);
 }
+//---------------------------------------------------------------------------
+$(function() {
+  $('#p1 a').miniPreview({ prefetch: 'pageload' });
+});
 //---------------------------background effect------------------------------
 console.clear();
 const canvas = document.createElement('canvas');
