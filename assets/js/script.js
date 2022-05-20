@@ -1,19 +1,54 @@
+var searchBody = document.querySelector('#search-body');
+var colapsTag = document.querySelector('#accordion');
+var p1 = document.querySelector('#p1');
 
-//---------------------------searchLatLon--------------------------------------------
+var year;
+var munth;
+var wikiObj;
+//document.getElementById("myDIV").style.opacity = "0.5";
+
+//---------------------------search Comic--------------------------------------------
 function searchComic() {
 <<<<<<< Updated upstream
 =======
   //my key
 getParams();
+<<<<<<< HEAD
+document.body.style.background.opacity = '0.1';
+=======
 console.log(year)
 document.body.style.background.opacity = '0.1';
 >>>>>>> Stashed changes
+>>>>>>> 430ffdef73aad31408cca1a0890b9d0c87814561
 
 // Create variables from pub and private keys
 var PoKEY = "4ad6d5dfbe0363fc5df19946c9351c2a";
 var PrKey = 'f820964efbbd5f5c999a0e07acf2d1121d12729d';
 var cTime = "1234"; //this should probably be a real timestamp
 
+<<<<<<< HEAD
+var pvtkey = "0b0978c066ab6b1971c35e90aa799998";
+var pubkey = '3d6bd3acb1691f2b4475823f3933cb22f190092f';
+
+var ts = Number(new Date());
+
+var message = ts+pubkey+pvtkey;  
+var hash = CryptoJS.MD5(message).toString(); 
+
+// Create variables for date range, then put those in the URL
+
+var date1 = year + "-" + munth + "-" + '01';
+var date2 = year + "-" + munth + "-" + '31';
+var dateRange = "dateRange=" + date1 + "%2C%20" + date2;
+console.log(dateRange);
+
+QueryUrl = 'https://gateway.marvel.com/v1/public/characters?ts='+ts+'&orderBy=name&apikey='+ pvtkey +'&hash='+ hash;
+QueryUrl = "https://gateway.marvel.com:443/v1/public/comics?" + dateRange + "&format=comic&formatType=comic&dateDescriptor=thisMonth&ts=" + ts + "&apikey=" + pvtkey + "&hash=" + hash;
+
+console.log(hash);
+console.log(QueryUrl);
+
+=======
 //----------------------
 // Create the hash
 var hashTest = CryptoJS.MD5(cTime+PrKey+PoKEY);
@@ -44,6 +79,7 @@ var QueryUrl = "https://gateway.marvel.com:443/v1/public/comics?" + dateRange + 
 console.log(hash);
 console.log(QueryUrl);
 Minimum = 1
+>>>>>>> 430ffdef73aad31408cca1a0890b9d0c87814561
   fetch(QueryUrl)
     .then(function (response) {
       if (!response.ok) {
@@ -54,11 +90,20 @@ Minimum = 1
     .then(function (locRes) {
       console.log(locRes);
       if (!locRes) {
+<<<<<<< HEAD
+=======
         alert("No Comics Published on this Date");
+>>>>>>> 430ffdef73aad31408cca1a0890b9d0c87814561
         console.log('No results found!');
         resultContentEl.innerHTML = '<h3>No results found, search again!</h3>';
       } else {
         var newObj = locRes['data']['results'];
+<<<<<<< HEAD
+        console.log(newObj);
+        for (var i = 0; i < newObj.length; i++) {
+          // printout(newObj[i]['characters']['items']);
+          searchHistory(newObj[i]['title'],newObj[i]['thumbnail']['path'],newObj[i]['urls'][0]['url']);
+=======
         console.log(newObj.length);
         if (newObj.length < Minimum) {
           document.location = './dateError.html';
@@ -69,6 +114,7 @@ Minimum = 1
           searchHistory(newObj[i]['title'],newObj[i]['thumbnail']['path']);}
 
         
+>>>>>>> 430ffdef73aad31408cca1a0890b9d0c87814561
         }
       }
       
@@ -81,6 +127,53 @@ Minimum = 1
       console.error(error);
     });
 }
+<<<<<<< HEAD
+
+//----------------------------------------------------------------------------------
+//https://en.wikipedia.org/w/rest.php/v1/search/page?q=Captain%20America&limit=100
+//https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=&srlimit=20&srsearch=SEARCH_QUERY_GOES_HERE
+//---------------------------search Wiki--------------------------------------------
+function searchWiki(resultObj) {
+  var wikiTitle;
+  var nameCleaned = resultObj.replace(/\s/g, '%20')
+  var value = "'"+nameCleaned+"'"
+  console.log(value);
+  var WikiQueryUrl = 'https://en.wikipedia.org/w/rest.php/v1/search/page?limit=1&q='+value;
+  //console.log(WikiQueryUrl);
+  
+    fetch(WikiQueryUrl)
+      .then(function (response) {
+        if (!response.ok) {
+          throw response.json();
+        }
+        return response.json();
+      })
+      .then(function (locRes) {
+        if (!locRes) {
+          console.log('No results found!');
+          resultContentEl.innerHTML = '<h3>No results found, search again!</h3>';
+        } else {
+          console.log(locRes);
+          wikiObj = locRes['pages'][0]['title'];
+          console.log(wikiObj);
+
+        }
+
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+      // wikiTitle = locRes['pages'][0]['description'];
+    console.log(wikiObj);
+    return wikiTitle;
+  }
+  
+//------------------------------search history-------------------------------------------
+function searchHistory(resultObj,path,Marvelurl) {
+      var wikiTitle = searchWiki(resultObj);
+      console.log(wikiTitle);
+      var p1 = document.createElement('p');
+=======
 <<<<<<< Updated upstream
 =======
 // // -------------------------------pop up script --------------------------------------
@@ -91,10 +184,24 @@ Minimum = 1
 //------------------------------search history-------------------------------------------
 function searchHistory(resultObj,path) {
   console.log(resultObj);
+>>>>>>> 430ffdef73aad31408cca1a0890b9d0c87814561
       var linkButtonEl = document.createElement('a');
       //https://www.google.com/search?q=fantastic+four
       var url = 'https://www.google.com/search?q=' + resultObj+ ' comic book marvel';
       linkButtonEl.textContent = resultObj;
+<<<<<<< HEAD
+      p1.setAttribute('id','p1');
+  //  linkButtonEl.setAttribute('href', path+'.jpg', target = "_self");
+      linkButtonEl.setAttribute('href',Marvelurl, target = "_self");
+      linkButtonEl.setAttribute('title',wikiTitle);
+      linkButtonEl.classList.add('btn', 'btn-dark','column','margin','btn-info', 'btn-block');
+      searchBody.append(p1);
+      p1.appendChild(linkButtonEl);
+      // b.getAttribute("href") && b.hostname !== location.hostname && (b.target = "_blank") } } ; externalLinks();
+
+}
+
+=======
       linkButtonEl.setAttribute('id',resultObj);
       linkButtonEl.setAttribute('href', path+'.jpg', target = "_self");
       linkButtonEl.classList.add('btn', 'btn-dark','column','margin','btn-info', 'btn-block');
@@ -103,6 +210,7 @@ function searchHistory(resultObj,path) {
       // b.getAttribute("href") && b.hostname !== location.hostname && (b.target = "_blank") } } ; externalLinks();
 
 }
+>>>>>>> 430ffdef73aad31408cca1a0890b9d0c87814561
 //------------------------------function printout-------------------------------------------
 
 function printout(items){
@@ -131,9 +239,12 @@ function getParams() {
   var searchParamsArr = document.location.search.split('&');
   year = searchParamsArr[0].split('=').pop();
   munth = searchParamsArr[1].split('=').pop();
+<<<<<<< HEAD
+=======
   if (year===null || year===undefined || year ==='') {
     document.location = './yearError.html';
   }
+>>>>>>> 430ffdef73aad31408cca1a0890b9d0c87814561
   console.log(year,munth);
   return;
   // Get the query and format values
@@ -141,6 +252,13 @@ function getParams() {
 
   //searchApi(query, format);
 }
+<<<<<<< HEAD
+//---------------------------------------------------------------------------
+$(function() {
+  $('#p1 a').miniPreview({ prefetch: 'pageload' });
+});
+=======
+>>>>>>> 430ffdef73aad31408cca1a0890b9d0c87814561
 //---------------------------background effect------------------------------
 console.clear();
 const canvas = document.createElement('canvas');
@@ -287,6 +405,18 @@ function f() {
     );
 }
 f();
+<<<<<<< HEAD
+
+// ---
+gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+document.body.onmousemove = (e) => {
+    ps[0] = e.clientX / window.innerWidth * 2 - 1;
+    ps[1] = -1 * (e.clientY / window.innerHeight * 2 - 1);
+    gl.bufferSubData(gl.ARRAY_BUFFER, 0, ps.slice(0, 2)); // that's why DYNAMIC_DRAW
+    f();
+} 
+=======
 >>>>>>> Stashed changes
 
 searchComic();
+>>>>>>> 430ffdef73aad31408cca1a0890b9d0c87814561

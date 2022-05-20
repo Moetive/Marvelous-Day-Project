@@ -75,6 +75,9 @@ main {
   justify-content: center;
 }
 
+<<<<<<< HEAD
+
+=======
 /* Pop Up CSS */
 /* Popup container - can be anything you want */
 .popup {
@@ -132,6 +135,7 @@ main {
   from {opacity: 0;}
   to {opacity:1 ;}
 }
+>>>>>>> 430ffdef73aad31408cca1a0890b9d0c87814561
 /* make each code card a flexbox column to align and justify content within it */
 .code-card {
   display: flex;
