@@ -7,6 +7,7 @@ var munth;
 var wikiObj;
 //document.getElementById("myDIV").style.opacity = "0.5";
 
+
 //---------------------------search Comic--------------------------------------------
 function searchComic() {
   //my key
@@ -29,7 +30,7 @@ var date2 = year + "-" + munth + "-" + '31';
 var dateRange = "dateRange=" + date1 + "%2C%20" + date2;
 console.log(dateRange);
 
-QueryUrl = 'https://gateway.marvel.com/v1/public/characters?ts='+ts+'&orderBy=name&apikey='+ pvtkey +'&hash='+ hash;
+// QueryUrl = 'https://gateway.marvel.com/v1/public/characters?ts='+ts+'&orderBy=name&apikey='+ pvtkey +'&hash='+ hash;
 QueryUrl = "https://gateway.marvel.com:443/v1/public/comics?" + dateRange + "&format=comic&formatType=comic&dateDescriptor=thisMonth&ts=" + ts + "&apikey=" + pvtkey + "&hash=" + hash;
 
 console.log(hash);
@@ -99,6 +100,11 @@ function searchWiki(resultObj) {
     return wikiTitle;
   }
   
+//Ben's indexing var
+var idIndex = 0;
+
+//Ben's modal el
+var modalEl = document.getElementById("#comicDetails");
 //------------------------------search history-------------------------------------------
 function searchHistory(resultObj,path,Marvelurl) {
       var wikiTitle = searchWiki(resultObj);
@@ -110,12 +116,22 @@ function searchHistory(resultObj,path,Marvelurl) {
       linkButtonEl.textContent = resultObj;
       p1.setAttribute('id','p1');
   //  linkButtonEl.setAttribute('href', path+'.jpg', target = "_self");
-      linkButtonEl.setAttribute('href',Marvelurl, target = "_self");
+      // linkButtonEl.setAttribute('href',Marvelurl, target = "_self");
       linkButtonEl.setAttribute('title',wikiTitle);
+      linkButtonEl.setAttribute('id', idIndex);
       linkButtonEl.classList.add('btn', 'btn-dark','column','margin','btn-info', 'btn-block');
       searchBody.append(p1);
       p1.appendChild(linkButtonEl);
-      // b.getAttribute("href") && b.hostname !== location.hostname && (b.target = "_blank") } } ; externalLinks();
+      // b.getAttribute("href") && b.hostname !== location.hostname && (b.target = "_blank") } } ; externalLinks();  
+      linkButtonEl.addEventListener('click', function (event) {
+        var btnID = event.target.id;
+        //var inputText = "what ever just testing"  // document.getElementById(btnIndex).value; //wtf is this
+        //based on index above, save the input text to an object
+        $("#detail-body").text(btnID);
+        modalEl.setAttribute("aria-hidden", "true");
+      });    
+      idIndex++;
+      console.log(modalEl.innerHTML);
 
 }
 
