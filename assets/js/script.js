@@ -34,7 +34,7 @@ QueryUrl = "https://gateway.marvel.com:443/v1/public/comics?" + dateRange + "&fo
 
 console.log(hash);
 console.log(QueryUrl);
-Minimum = 1
+
   fetch(QueryUrl)
     .then(function (response) {
       if (!response.ok) {
@@ -45,28 +45,17 @@ Minimum = 1
     .then(function (locRes) {
       console.log(locRes);
       if (!locRes) {
-        alert("No Comics Published on this Date");
         console.log('No results found!');
         resultContentEl.innerHTML = '<h3>No results found, search again!</h3>';
       } else {
         var newObj = locRes['data']['results'];
-        console.log(newObj.length);
-        if (newObj.length < Minimum) {
-          document.location = './dateError.html';
-          console.log('No Data ')
-          
-        } else{for (var i = 0; i < newObj.length; i++) {
+        console.log(newObj);
+        for (var i = 0; i < newObj.length; i++) {
           // printout(newObj[i]['characters']['items']);
-          searchHistory(newObj[i]['title'],newObj[i]['thumbnail']['path']);}
-
-        
+          searchHistory(newObj[i]['title'],newObj[i]['thumbnail']['path'],newObj[i]['urls'][0]['url']);
         }
       }
-      
     })
-    .then(function (response) {
-      console.log(response.json());
-      })
     .catch(function (error) {
       console.error(error);
     });
@@ -99,7 +88,7 @@ function searchWiki(resultObj) {
           console.log(locRes);
           wikiObj = locRes['pages'][0]['title'];
           console.log(wikiObj);
-
+          return wikiTitle;  
         }
 
       })
@@ -107,7 +96,6 @@ function searchWiki(resultObj) {
         console.error(error);
       });
       // wikiTitle = locRes['pages'][0]['description'];
-    console.log(wikiObj);
     return wikiTitle;
   }
   
@@ -159,9 +147,6 @@ function getParams() {
   var searchParamsArr = document.location.search.split('&');
   year = searchParamsArr[0].split('=').pop();
   munth = searchParamsArr[1].split('=').pop();
-  if (year===null || year===undefined || year ==='') {
-    document.location = './yearError.html';
-  }
   console.log(year,munth);
   return;
   // Get the query and format values
@@ -169,6 +154,10 @@ function getParams() {
 
   //searchApi(query, format);
 }
+//---------------------------------------------------------------------------
+$(function() {
+  $('#p1 a').miniPreview({ prefetch: 'pageload' });
+});
 //---------------------------background effect------------------------------
 console.clear();
 const canvas = document.createElement('canvas');
