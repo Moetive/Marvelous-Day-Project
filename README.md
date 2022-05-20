@@ -27,16 +27,19 @@ Libraries:
 </br>google fonts
 
 ## Contributors
-Hossein
-</br>Ben
-</br>Tamara
-</br>Dylan
-</br>Mohamed
-
+  Hossein
 - [@neiman924](https://github.com/neiman924)
+
+ Ben
 - [@chicken1991](https://github.com/chicken1991)
+
+ Tamara
 - [@tammcdan](https://github.com/tammcdan)
+
+ Dylan
 - [@dhuw](https://github.com/dhuw)
+
+ Mohamed
 - [@moetive](https://github.com/Moetive)
 
 ## User Story 
