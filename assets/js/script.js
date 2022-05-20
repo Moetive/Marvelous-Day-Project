@@ -104,7 +104,7 @@ function searchWiki(resultObj) {
 var idIndex = 0;
 
 //Ben's modal el
-var modalEl = document.getElementById("#comicDetails");
+var modalEl = $("#comicDetails");
 //------------------------------search history-------------------------------------------
 function searchHistory(resultObj,path,Marvelurl) {
       var wikiTitle = searchWiki(resultObj);
@@ -128,7 +128,7 @@ function searchHistory(resultObj,path,Marvelurl) {
         //var inputText = "what ever just testing"  // document.getElementById(btnIndex).value; //wtf is this
         //based on index above, save the input text to an object
         $("#detail-body").text(btnID);
-        modalEl.setAttribute("aria-hidden", "true");
+        modalEl.Modal("show");
       });    
       idIndex++;
       console.log(modalEl.innerHTML);
