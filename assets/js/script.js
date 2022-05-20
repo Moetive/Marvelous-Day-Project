@@ -9,11 +9,24 @@ var wikiObj;
 
 //---------------------------search Comic--------------------------------------------
 function searchComic() {
+<<<<<<< Updated upstream
+=======
   //my key
 getParams();
+<<<<<<< HEAD
 document.body.style.background.opacity = '0.1';
+=======
+console.log(year)
+document.body.style.background.opacity = '0.1';
+>>>>>>> Stashed changes
+>>>>>>> 430ffdef73aad31408cca1a0890b9d0c87814561
 
+// Create variables from pub and private keys
+var PoKEY = "4ad6d5dfbe0363fc5df19946c9351c2a";
+var PrKey = 'f820964efbbd5f5c999a0e07acf2d1121d12729d';
+var cTime = "1234"; //this should probably be a real timestamp
 
+<<<<<<< HEAD
 var pvtkey = "0b0978c066ab6b1971c35e90aa799998";
 var pubkey = '3d6bd3acb1691f2b4475823f3933cb22f190092f';
 
@@ -35,6 +48,38 @@ QueryUrl = "https://gateway.marvel.com:443/v1/public/comics?" + dateRange + "&fo
 console.log(hash);
 console.log(QueryUrl);
 
+=======
+//----------------------
+// Create the hash
+var hashTest = CryptoJS.MD5(cTime+PrKey+PoKEY);
+var hash = hashTest.toString(CryptoJS.enc.Hex);
+
+//just testing
+console.log(PoKEY);
+console.log(PrKey);
+console.log(cTime);
+console.log(hash);
+
+// Create variables for date range, then put those in the URL
+var date1 = "1990-01-01"
+var date2 = "1990-01-31"
+var dateRange = "dateRange=" + date1 + "%2C%20" + date2;
+
+// The url, baby!
+var QueryUrl = "https://gateway.marvel.com:443/v1/public/comics?" + dateRange + "&format=comic&formatType=comic&dateDescriptor=thisMonth&ts=" + cTime + "&apikey=" + PoKEY + "&hash=" + hash;
+
+<<<<<<< Updated upstream
+  console.log(QueryUrl);
+
+// I don't actually know what any of this does..
+  fetch(QueryUrl)
+    .then(function (response) {
+      return response;
+=======
+console.log(hash);
+console.log(QueryUrl);
+Minimum = 1
+>>>>>>> 430ffdef73aad31408cca1a0890b9d0c87814561
   fetch(QueryUrl)
     .then(function (response) {
       if (!response.ok) {
@@ -45,21 +90,44 @@ console.log(QueryUrl);
     .then(function (locRes) {
       console.log(locRes);
       if (!locRes) {
+<<<<<<< HEAD
+=======
+        alert("No Comics Published on this Date");
+>>>>>>> 430ffdef73aad31408cca1a0890b9d0c87814561
         console.log('No results found!');
         resultContentEl.innerHTML = '<h3>No results found, search again!</h3>';
       } else {
         var newObj = locRes['data']['results'];
+<<<<<<< HEAD
         console.log(newObj);
         for (var i = 0; i < newObj.length; i++) {
           // printout(newObj[i]['characters']['items']);
           searchHistory(newObj[i]['title'],newObj[i]['thumbnail']['path'],newObj[i]['urls'][0]['url']);
+=======
+        console.log(newObj.length);
+        if (newObj.length < Minimum) {
+          document.location = './dateError.html';
+          console.log('No Data ')
+          
+        } else{for (var i = 0; i < newObj.length; i++) {
+          // printout(newObj[i]['characters']['items']);
+          searchHistory(newObj[i]['title'],newObj[i]['thumbnail']['path']);}
+
+        
+>>>>>>> 430ffdef73aad31408cca1a0890b9d0c87814561
         }
       }
+      
+>>>>>>> Stashed changes
     })
+    .then(function (response) {
+      console.log(response.json());
+      })
     .catch(function (error) {
       console.error(error);
     });
 }
+<<<<<<< HEAD
 
 //----------------------------------------------------------------------------------
 //https://en.wikipedia.org/w/rest.php/v1/search/page?q=Captain%20America&limit=100
@@ -105,10 +173,23 @@ function searchHistory(resultObj,path,Marvelurl) {
       var wikiTitle = searchWiki(resultObj);
       console.log(wikiTitle);
       var p1 = document.createElement('p');
+=======
+<<<<<<< Updated upstream
+=======
+// // -------------------------------pop up script --------------------------------------
+// function myFunction() {
+//   var popup = document.getElementById("myPopup");
+//   popup.classList.toggle("show");
+// }
+//------------------------------search history-------------------------------------------
+function searchHistory(resultObj,path) {
+  console.log(resultObj);
+>>>>>>> 430ffdef73aad31408cca1a0890b9d0c87814561
       var linkButtonEl = document.createElement('a');
       //https://www.google.com/search?q=fantastic+four
       var url = 'https://www.google.com/search?q=' + resultObj+ ' comic book marvel';
       linkButtonEl.textContent = resultObj;
+<<<<<<< HEAD
       p1.setAttribute('id','p1');
   //  linkButtonEl.setAttribute('href', path+'.jpg', target = "_self");
       linkButtonEl.setAttribute('href',Marvelurl, target = "_self");
@@ -120,6 +201,16 @@ function searchHistory(resultObj,path,Marvelurl) {
 
 }
 
+=======
+      linkButtonEl.setAttribute('id',resultObj);
+      linkButtonEl.setAttribute('href', path+'.jpg', target = "_self");
+      linkButtonEl.classList.add('btn', 'btn-dark','column','margin','btn-info', 'btn-block');
+      searchBody.prepend(linkButtonEl);
+
+      // b.getAttribute("href") && b.hostname !== location.hostname && (b.target = "_blank") } } ; externalLinks();
+
+}
+>>>>>>> 430ffdef73aad31408cca1a0890b9d0c87814561
 //------------------------------function printout-------------------------------------------
 
 function printout(items){
@@ -148,6 +239,12 @@ function getParams() {
   var searchParamsArr = document.location.search.split('&');
   year = searchParamsArr[0].split('=').pop();
   munth = searchParamsArr[1].split('=').pop();
+<<<<<<< HEAD
+=======
+  if (year===null || year===undefined || year ==='') {
+    document.location = './yearError.html';
+  }
+>>>>>>> 430ffdef73aad31408cca1a0890b9d0c87814561
   console.log(year,munth);
   return;
   // Get the query and format values
@@ -155,10 +252,13 @@ function getParams() {
 
   //searchApi(query, format);
 }
+<<<<<<< HEAD
 //---------------------------------------------------------------------------
 $(function() {
   $('#p1 a').miniPreview({ prefetch: 'pageload' });
 });
+=======
+>>>>>>> 430ffdef73aad31408cca1a0890b9d0c87814561
 //---------------------------background effect------------------------------
 console.clear();
 const canvas = document.createElement('canvas');
@@ -305,6 +405,7 @@ function f() {
     );
 }
 f();
+<<<<<<< HEAD
 
 // ---
 gl.bindBuffer(gl.ARRAY_BUFFER, buf);
@@ -314,3 +415,8 @@ document.body.onmousemove = (e) => {
     gl.bufferSubData(gl.ARRAY_BUFFER, 0, ps.slice(0, 2)); // that's why DYNAMIC_DRAW
     f();
 } 
+=======
+>>>>>>> Stashed changes
+
+searchComic();
+>>>>>>> 430ffdef73aad31408cca1a0890b9d0c87814561
