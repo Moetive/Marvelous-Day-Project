@@ -57,7 +57,7 @@ Minimum = 1
           
         } else{for (var i = 0; i < newObj.length; i++) {
           // printout(newObj[i]['characters']['items']);
-          searchHistory(newObj[i]['title'],newObj[i]['thumbnail']['path']);}
+          searchHistory(newObj[i]['title'],newObj[i]['thumbnail']['path'],newObj[i]['urls'][0]['url']);
 
         
         }
