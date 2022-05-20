@@ -1,7 +1,7 @@
 var searchBody = document.querySelector('#search-body');
 var colapsTag = document.querySelector('#accordion');
 var p1 = document.querySelector('#p1');
-
+// New Code
 var year;
 var munth;
 var wikiObj;
