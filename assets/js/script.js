@@ -127,8 +127,8 @@ function searchHistory(resultObj,path,Marvelurl) {
         var btnID = event.target.id;
         //var inputText = "what ever just testing"  // document.getElementById(btnIndex).value; //wtf is this
         //based on index above, save the input text to an object
-        $("#detail-body").text(btnID);
-        modalEl.Modal("show");
+        $("#detail-body").text(resultObj);
+        modalEl.modal("toggle");
       });    
       idIndex++;
       console.log(modalEl.innerHTML);
