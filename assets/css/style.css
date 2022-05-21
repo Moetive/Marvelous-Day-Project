@@ -51,6 +51,11 @@ img{
   max-width:8em;
 }
 
+#modalListLink{
+  font-size: 1em;
+  color: white;
+}
+
 .daycard {
   border-width: 1px;
   border-color: #fff;

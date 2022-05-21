@@ -385,15 +385,19 @@ function displayCard(title, image, links, date) {
   var modalTitle = $(".modal-title");
   var modalBody = $(".modal-body");
   var modalDate = $("#modal-date");
-  var modalLinks = $("<li>");
+  var modalLi = $("<li>");
+  var modalListLink = $("<a>");
   var modalImage = $("#detail-image");
+  var modalList = $("#modal-list");
 
-  modalTitle.text(title).addClass("bg-dark text-white");
+  // modalTitle.text(title).addClass("bg-dark text-white");
+  modalTitle.text(title);
 
   modalDate.text("Released on: " + date);
-  modalBody.append(modalDate);
+  modalBody.prepend(modalDate);
   modalImage.attr("src", image);
-  modalBody.append(modalImage);
+  modalBody.prepend(modalImage);
+
   //List things from wiki
   // for(var x = 0; x < wikiLink[3].length; x++){
   //   console.log(wikiSearch(title)[3]);
@@ -421,6 +425,16 @@ function displayCard(title, image, links, date) {
     .then(function (data) {
       console.log(data);
       console.log(data[3][0]);
+      //empty the list in case anyone clicks another button
+      modalList.empty();
+      //Go through and add any links from the wiki API
+      for(var x = 0; x < data[3].length; x++){
+        modalListLink.attr("href", data[3][x]);
+        modalListLink.attr("id", "modalListLink");
+        modalListLink.text(data[3][x]);
+        modalList.append(modalLi);
+        modalLi.append(modalListLink);
+      }
     })
     .catch(function (error) {
       console.log(error);
