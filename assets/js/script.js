@@ -388,7 +388,7 @@ function displayCard(title, image, links, date) {
   // modalImage.empty();
   // modalDate.empty();
   // }
-  var theLinks = links;
+  var marvelLink = links;
   var modalTitle = $(".modal-title");
   var modalBody = $(".modal-body");
   var modalDate = $("#modal-date");
@@ -396,6 +396,10 @@ function displayCard(title, image, links, date) {
   var modalListLink = $("<a>");
   var modalImage = $("#detail-image");
   var modalList = $("#modal-list");
+  var theMarvelLink = $("#marvel-link");
+  var theLink = $("<a>")
+  theLink.text(marvelLink).attr("href", marvelLink);
+  theMarvelLink.append(theLink);
 
   // modalTitle.text(title).addClass("bg-dark text-white");
   modalTitle.text(title);
