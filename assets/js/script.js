@@ -51,6 +51,9 @@ function searchComic() {
       } else {
         var newObj = locRes['data']['results'];
         console.log(newObj);
+        if(!newObj.length){
+          document.location = "./dateError.html";
+        } else {
         for (var i = 0; i < newObj.length; i++) {
           // printout(newObj[i]['characters']['items']);
           var histTitle = newObj[i]['title'];
@@ -61,6 +64,7 @@ function searchComic() {
           console.log(histDate);
           searchHistory(histTitle, histThumbnail, histMarvelUrl, histDate);
         }
+      }
       }
     })
     .catch(function (error) {
