@@ -46,6 +46,11 @@ header {
 img{
   vertical-align:middle;
 }
+
+#detail-img{
+  max-width:8em;
+}
+
 .daycard {
   border-width: 1px;
   border-color: #fff;
