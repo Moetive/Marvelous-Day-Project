@@ -176,6 +176,9 @@ function getParams() {
   var searchParamsArr = document.location.search.split('&');
   year = searchParamsArr[0].split('=').pop();
   munth = searchParamsArr[1].split('=').pop();
+  if(!year){
+    document.location = "./yearError.html";
+  }
   console.log(year, munth);
   return;
   // Get the query and format values
