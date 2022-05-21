@@ -46,6 +46,16 @@ header {
 img{
   vertical-align:middle;
 }
+
+#detail-image{
+  max-width:10em;
+}
+
+#modalListLink{
+  font-size: .3em;
+  color: white;
+}
+
 .daycard {
   border-width: 1px;
   border-color: #fff;
