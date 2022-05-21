@@ -106,8 +106,7 @@ function searchWiki(resultObj) {
   return wikiTitle;
 }
 
-//Ben's indexing var
-var idIndex = 0;
+
 //------------------------------search history-------------------------------------------
 function searchHistory(resultObj, path, Marvelurl, dates) {
   var wikiTitle = searchWiki(resultObj);
@@ -136,13 +135,13 @@ function searchHistory(resultObj, path, Marvelurl, dates) {
   linkButtonEl.addEventListener('click', function (event) {
     var btnID = event.target.id;
     displayCard(resultObj, storedThumbnail, storedMarvelUrl, storedDates);
-  //   $("#detail-body").text(resultObj).addClass("bg-dark text-white");
-  //   //List things from wiki
-  //   for(var i = 0; i < 5; i++){
-  //     // var wikiLink = wikiSeach(resultObj).
-  //     // $("#detail-body").
-  //   }
-  //   modalEl.modal("toggle");
+    //   $("#detail-body").text(resultObj).addClass("bg-dark text-white");
+    //   //List things from wiki
+    //   for(var i = 0; i < 5; i++){
+    //     // var wikiLink = wikiSeach(resultObj).
+    //     // $("#detail-body").
+    //   }
+    //   modalEl.modal("toggle");
   });
   // idIndex++;
   // console.log(modalEl.innerHTML);
@@ -345,12 +344,68 @@ document.body.onmousemove = (e) => {
 }
 
 // Wiki API stuff!
-async function wikiSearch(title) {
+// async function wikiSearch(title) {
+//   var url = "https://en.wikipedia.org/w/api.php";
+
+//   var params = {
+//     action: "opensearch",
+//     search: title,
+//     limit: "5",
+//     namespace: "0",
+//     format: "json"
+//   };
+
+//   url = url + "?origin=*";
+//   Object.keys(params).forEach(function (key) { url += "&" + key + "=" + params[key]; });
+
+//   fetch(url)
+//     .then(function (response) {
+//       return response.json();
+//     })
+//     .then(function (response) {
+//       console.log(response);
+//     })
+//     .catch(function (error) {
+//       console.log(error);
+//     });
+// }
+
+//Ben's indexing var
+var idIndex = 0;
+var modalEl = $("#comicDetails");
+
+//Display the card stuff and junk?
+function displayCard(title, image, links, date) {
+  // if(modalTitle){
+  //   console.log("IMAGE EXISTS _ REMOVE IT");
+  // modalImage.empty();
+  // modalDate.empty();
+  // }
+  var theLinks = links;
+  var modalTitle = $(".modal-title");
+  var modalBody = $(".modal-body");
+  var modalDate = $("#modal-date");
+  var modalLinks = $("<li>");
+  var modalImage = $("#detail-image");
+
+  modalTitle.text(title).addClass("bg-dark text-white");
+
+  modalDate.text("Released on: " + date);
+  modalBody.append(modalDate);
+  modalImage.attr("src", image);
+  modalBody.append(modalImage);
+  //List things from wiki
+  // for(var x = 0; x < wikiLink[3].length; x++){
+  //   console.log(wikiSearch(title)[3]);
+  // }
+  modalEl.modal("toggle");
+  idIndex++;
+
   var url = "https://en.wikipedia.org/w/api.php";
 
   var params = {
     action: "opensearch",
-    search: title.trim(),
+    search: title,
     limit: "5",
     namespace: "0",
     format: "json"
@@ -360,47 +415,15 @@ async function wikiSearch(title) {
   Object.keys(params).forEach(function (key) { url += "&" + key + "=" + params[key]; });
 
   fetch(url)
-    .then(function (response) { 
-      return response.json(); 
+    .then(function (response) {
+      return response.json();
     })
-    .then(function (response) { 
-      console.log(response); 
+    .then(function (data) {
+      console.log(data);
+      console.log(data[3][0]);
     })
     .catch(function (error) {
-       console.log(error); 
-      });
-      console.log(url);
-  
+      console.log(error);
+    });
 
 }
-
-var modalEl = $("#comicDetails");
-//Display the card stuff and junk?
-function displayCard(title, image, links, date){
-  if(modalDate){
-  modalDate.empty();
-  }
-  var theLinks = links;
-  var modalTitle = $(".modal-title");
-  var modalBody = $(".modal-body");
-  var modalDate = $("<h5>");
-  var modalLinks = $("<p>");
-  var modalImage = $("<img>");
-  modalTitle.text(title).addClass("bg-dark text-white");
-  
-  modalDate.text("Released on: " + date);
-  modalBody.append(modalDate);
-console.log(image + "------------------------------------------------");
-  modalImage.attr("src", image);
-  modalImage.attr("id", "detail-img");
-  modalBody.append(modalImage);
-    //List things from wiki
-      // var wikiLink = wikiSeach(resultObj).
-      // $("#detail-body").
-      // modalLinks.text(wikiSearch(title)[3].i);
-      // modalBody.append(modalLinks);
-      console.log(wikiSearch(title)[3]);
-    modalEl.modal("toggle");
-  idIndex++;
-  
-  }
