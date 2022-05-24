@@ -28,13 +28,13 @@ function searchComic() {
   var date1 = year + "-" + munth + "-" + '01';
   var date2 = year + "-" + munth + "-" + '31';
   var dateRange = "dateRange=" + date1 + "%2C%20" + date2;
-  console.log(dateRange);
+  //console.log(dateRange);
 
   // QueryUrl = 'https://gateway.marvel.com/v1/public/characters?ts='+ts+'&orderBy=name&apikey='+ pvtkey +'&hash='+ hash;
   QueryUrl = "https://gateway.marvel.com:443/v1/public/comics?" + dateRange + "&format=comic&formatType=comic&dateDescriptor=thisMonth&ts=" + ts + "&apikey=" + pvtkey + "&hash=" + hash;
 
-  console.log(hash);
-  console.log(QueryUrl);
+  //console.log(hash);
+  //console.log(QueryUrl);
 
   fetch(QueryUrl)
     .then(function (response) {
@@ -44,13 +44,13 @@ function searchComic() {
       return response.json();
     })
     .then(function (locRes) {
-      console.log(locRes);
+      //console.log(locRes);
       if (!locRes) {
-        console.log('No results found!');
+        //console.log('No results found!');
         resultContentEl.innerHTML = '<h3>No results found, search again!</h3>';
       } else {
         var newObj = locRes['data']['results'];
-        console.log(newObj);
+        //console.log(newObj);
         if(!newObj.length){
           document.location = "./dateError.html";
         } else {
@@ -58,10 +58,10 @@ function searchComic() {
           // printout(newObj[i]['characters']['items']);
           var histTitle = newObj[i]['title'];
           var histThumbnail = newObj[i]['thumbnail']['path'] + ".jpg";
-          console.log(histThumbnail);
+          //console.log(histThumbnail);
           var histMarvelUrl = newObj[i]['urls'][0]['url'];
           var histDate = moment(newObj[i]['dates'][0]['date']).format("MMM Do, YYYY");
-          console.log(histDate);
+          //console.log(histDate);
           searchHistory(histTitle, histThumbnail, histMarvelUrl, histDate);
         }
       }
@@ -80,7 +80,7 @@ function searchWiki(resultObj) {
   var wikiTitle;
   var nameCleaned = resultObj.replace(/\s/g, '%20')
   var value = "'" + nameCleaned + "'"
-  console.log(value);
+  //console.log(value);
   var WikiQueryUrl = 'https://en.wikipedia.org/w/rest.php/v1/search/page?limit=1&q=' + value;
   //console.log(WikiQueryUrl);
 
@@ -93,12 +93,12 @@ function searchWiki(resultObj) {
     })
     .then(function (locRes) {
       if (!locRes) {
-        console.log('No results found!');
+        //console.log('No results found!');
         resultContentEl.innerHTML = '<h3>No results found, search again!</h3>';
       } else {
-        console.log(locRes);
+        //console.log(locRes);
         wikiObj = locRes['pages'][0]['title'];
-        console.log(wikiObj);
+        //console.log(wikiObj);
         return wikiTitle;
       }
 
@@ -114,7 +114,7 @@ function searchWiki(resultObj) {
 //------------------------------search history-------------------------------------------
 function searchHistory(resultObj, path, Marvelurl, dates) {
   var wikiTitle = searchWiki(resultObj);
-  console.log(wikiTitle);
+  //console.log(wikiTitle);
   var p1 = document.createElement('p');
   var linkButtonEl = document.createElement('a');
   //https://www.google.com/search?q=fantastic+four
@@ -169,10 +169,10 @@ var munthText = document.getElementById("munthText");
 // }
 $(document).on("click", ".myclass figure", function () {
   var year = document.getElementById("date").value;
-  console.log(year);
+  //console.log(year);
   var munth = $('i', this).length ? $('i', this).text() : $(this).text();
   var url = './search-result.html?year=' + year + '&munth=' + munth;
-  console.log(url);
+  //console.log(url);
   document.location = url, '_blank';
 });
 //----------------------------get Params from url------------------------------------------
@@ -183,17 +183,14 @@ function getParams() {
   if(!year){
     document.location = "./yearError.html";
   }
-  console.log(year, munth);
+  //console.log(year, munth);
   return;
   // Get the query and format values
   //cityName = searchParamsArr[0].split('=').pop();
 
   //searchApi(query, format);
 }
-//---------------------------------------------------------------------------
-$(function () {
-  $('#p1 a').miniPreview({ prefetch: 'pageload' });
-});
+
 //---------------------------background effect------------------------------
 console.clear();
 const canvas = document.createElement('canvas');
@@ -430,8 +427,8 @@ function displayCard(title, image, links, date) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
-      console.log(data[3][0]);
+      //console.log(data);
+      //console.log(data[3][0]);
       //empty the list in case anyone clicks another button
       modalList.empty();
       //Go through and add any links from the wiki API
@@ -444,7 +441,7 @@ function displayCard(title, image, links, date) {
       }
     })
     .catch(function (error) {
-      console.log(error);
+      //console.log(error);
     });
 
 }
