@@ -64,3 +64,14 @@ They are a marvel fans.
 We are Group 5 working together on Project-1...
 ## Deployed Links
 https://moetive.github.io/Project-1/
+
+## Screenshots
+
+![demo.png](./assets/img/demo.png)
+![demo2.png](./assets/img/demo2.png)
+![demo3.png](./assets/img/demo3.png)
+
+
+Created by Ben Pitroff, Hossein Neiman, Mohamed Omar, Dylan Hazlewood, Tamara Williams 
+
+[This project is MIT licensed](./license.md)
