@@ -1,4 +1,3 @@
-# Project-1
 ## *Marvelous Day Project*
 ------------------------------
 ## Project Description
